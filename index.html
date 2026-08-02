@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spam Email Detector</title>
+  <meta name="description" content="A beginner AI spam email detector built with vanilla JavaScript.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div class="brand-block">
+        <img src="assets/email-shield.svg" alt="" class="brand-mark">
+        <div>
+          <p class="eyebrow">Beginner AI Project</p>
+          <h1>Spam Email Detector</h1>
+        </div>
+      </div>
+      <div class="model-badge">Linear SVM</div>
+    </header>
+
+    <section class="workspace" aria-label="Spam detector workspace">
+      <div class="input-panel">
+        <div class="panel-heading">
+          <h2>Message</h2>
+          <span id="token-count">0 matched words</span>
+        </div>
+
+        <textarea id="email-input" spellcheck="true" placeholder="Paste an email or SMS message here"></textarea>
+
+        <div class="sample-row" aria-label="Sample messages">
+          <button type="button" data-sample="spam">Spam sample</button>
+          <button type="button" data-sample="ham">Safe sample</button>
+          <button type="button" data-sample="mixed">Neutral sample</button>
+        </div>
+
+        <div class="action-row">
+          <button type="button" id="analyze-button" class="primary-button">Analyze</button>
+          <button type="button" id="clear-button" class="secondary-button">Clear</button>
+        </div>
+      </div>
+
+      <aside class="result-panel" id="result-panel" data-result="empty" aria-live="polite">
+        <div class="verdict-topline">
+          <p>Result</p>
+          <span id="confidence-text">0% confidence</span>
+        </div>
+
+        <h2 id="verdict-text">Waiting for text</h2>
+        <p id="probability-text">Spam probability: 0%</p>
+
+        <div class="meter" aria-hidden="true">
+          <div id="meter-fill"></div>
+        </div>
+
+        <div class="signals-block">
+          <h3>Top Signals</h3>
+          <ul id="signal-list"></ul>
+        </div>
+
+        <dl class="stats-grid">
+          <div>
+            <dt>Samples</dt>
+            <dd id="training-size">0</dd>
+          </div>
+          <div>
+            <dt>Spam</dt>
+            <dd id="spam-count">0</dd>
+          </div>
+          <div>
+            <dt>Safe</dt>
+            <dd id="ham-count">0</dd>
+          </div>
+          <div>
+            <dt>Words</dt>
+            <dd id="vocabulary-size">0</dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+  </main>
+
+  <script src="src/spamDetector.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
